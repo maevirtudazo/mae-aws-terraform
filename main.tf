@@ -41,7 +41,7 @@ resource "aws_security_group_rule" "http_in" {
   to_port     = 80
   protocol    = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.blog.id
+  security_group_id = aws_security_group.main.id
 }
 
 
@@ -51,5 +51,5 @@ resource "aws_security_group_rule" "https_in" {
   to_port     = 443
   protocol    = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.blog.id
+  security_group_id = aws_security_group.main.id
 }
