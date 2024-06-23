@@ -11,7 +11,6 @@ data "aws_ami" "app_ami" {
     values = ["hvm"]
   }
 
-  owners = ["483285841698"]
 }
 
 data "aws_vpc" "default" {
