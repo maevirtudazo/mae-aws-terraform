@@ -2,7 +2,7 @@ data "aws_ami" "app_ami" {
   most_recent = true
 
   filter {
-    name   = "ami-name"
+    name   = "name"
     values = ["ubuntu-2204-standard-1696268698"]
   }
 
