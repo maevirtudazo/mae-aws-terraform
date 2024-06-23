@@ -27,6 +27,23 @@ resource "aws_instance" "blog" {
     Name = "Learning Terraform"
   }
 }
+resource "aws_security_group" "blog" {
+  name = "blog"
+  tags = {
+    Terraform = "true"
+  }
+  vpc_id = data.aws_vpc.default.id
+}
+
+resource "aws_security_group_rule" "blog_http_in" {
+  type        = "ingress"
+  from_port   = 80
+  to_port     = 80
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.blog.id
+}
+
 
 resource "aws_security_group_rule" "blog_https_in" {
   type        = "ingress"
