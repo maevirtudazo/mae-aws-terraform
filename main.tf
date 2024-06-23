@@ -3,7 +3,7 @@ data "aws_ami" "app_ami" {
 
   filter {
     name   = "name"
-    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
+    values = ["ubuntu-2204-standard-1686083135"]
   }
 
   filter {
@@ -11,23 +11,23 @@ data "aws_ami" "app_ami" {
     values = ["hvm"]
   }
 
-  owners = ["979382823631"] # Bitnami
+  owners = ["483285841698"]
 }
 
 data "aws_vpc" "default" {
   default = true
 }
 
-resource "aws_instance" "blog" {
+resource "aws_instance" "frontend-1" {
   ami                    = data.aws_ami.app_ami.id
   instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.blog.id]
+  vpc_security_group_ids = [aws_security_group.main.id]
 
   tags = {
     Name = "Learning Terraform"
   }
 }
-resource "aws_security_group" "blog" {
+resource "aws_security_group" "main" {
   name = "blog"
   tags = {
     Terraform = "true"
@@ -35,7 +35,7 @@ resource "aws_security_group" "blog" {
   vpc_id = data.aws_vpc.default.id
 }
 
-resource "aws_security_group_rule" "blog_http_in" {
+resource "aws_security_group_rule" "http_in" {
   type        = "ingress"
   from_port   = 80
   to_port     = 80
@@ -45,7 +45,7 @@ resource "aws_security_group_rule" "blog_http_in" {
 }
 
 
-resource "aws_security_group_rule" "blog_https_in" {
+resource "aws_security_group_rule" "https_in" {
   type        = "ingress"
   from_port   = 443
   to_port     = 443
