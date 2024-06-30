@@ -18,5 +18,5 @@ data "aws_vpc" "default" {
 }
 
 data "http" "myip" {
-  url = "https://ipv4.icanhazip.com"
+  url = "https://ipinfo.io/ip"
 }
