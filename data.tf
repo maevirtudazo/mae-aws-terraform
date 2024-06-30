@@ -17,6 +17,6 @@ data "aws_vpc" "default" {
   default = true
 }
 
-data "external" "my_ip" {
-  program = ["sh", "./get_ip.sh"]
+data "http" "myip" {
+  url = "https://ipv4.icanhazip.com"
 }
