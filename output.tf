@@ -1,5 +1,5 @@
 locals {
-  ip_address = data.http.myip.result.ip
+  ip_address = data.http.myip.response_body
 }
 
 output "ip_address" {
