@@ -18,5 +18,5 @@ data "aws_vpc" "default" {
 }
 
 data "external" "my_ip" {
-  program = ["sh", "-c", "curl -s https://ipinfo.io/ip"]
+  program = ["sh", "./get_ip.sh"]
 }
