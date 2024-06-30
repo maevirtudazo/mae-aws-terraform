@@ -3,7 +3,3 @@ variable "instance_type" {
   default     = "t3.nano"
 }
 
-variable "external_ip" {
-  description = "External IP address"
-  type        = string
-}
