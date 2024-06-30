@@ -1,5 +1,5 @@
 locals {
-  ip_address = data.http.my_ip.result.ip
+  ip_address = data.http.myip.result.ip
 }
 
 output "ip_address" {
