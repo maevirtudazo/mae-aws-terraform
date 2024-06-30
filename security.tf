@@ -1,5 +1,5 @@
 resource "aws_security_group" "main" {
-  name = "blog"
+  name = "main_firewall"
   tags = {
     Terraform = "true"
   }
@@ -11,7 +11,7 @@ resource "aws_security_group_rule" "http_in" {
   from_port   = 80
   to_port     = 80
   protocol    = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks = [data.http.my_ip.body]/32
   security_group_id = aws_security_group.main.id
 }
 
@@ -21,6 +21,6 @@ resource "aws_security_group_rule" "https_in" {
   from_port   = 443
   to_port     = 443
   protocol    = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks = [data.http.my_ip.body]/32
   security_group_id = aws_security_group.main.id
 }

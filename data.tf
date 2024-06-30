@@ -16,3 +16,7 @@ data "aws_ami" "app_ami" {
 data "aws_vpc" "default" {
   default = true
 }
+
+data "http" "my_ip" {
+  url = "https://ipinfo.io/ip"
+}
