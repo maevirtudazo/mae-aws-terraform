@@ -33,13 +33,3 @@ resource "aws_subnet" "subnet1" {
   vpc_id = data.aws_vpc.default.id
   cidr_block = "10.0.2.0/24"
 }
-
-resource "aws_security_group" "lb_sg" {
-  vpc_id = data.aws_vpc.default.id
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
