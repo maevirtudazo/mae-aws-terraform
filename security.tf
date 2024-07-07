@@ -29,7 +29,12 @@ resource "aws_security_group_rule" "https_in" {
 #  cidr_block = "10.0.0.0/16"
 #}
 
-# resource "aws_subnet" "subnet1" {
-#  vpc_id = data.aws_vpc.default.id
-#  cidr_block = "172.31.0.0/16"
-#}
+ resource "aws_subnet" "subnet1" {
+  vpc_id = data.aws_vpc.default.id
+  cidr_block = "172.31.48.0/20"
+}
+
+ resource "aws_subnet" "subnet2" {
+  vpc_id = data.aws_vpc.default.id
+  cidr_block = "172.31.64.0/20"
+}

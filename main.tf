@@ -47,9 +47,9 @@ resource "aws_instance" "frontend-3" {
 #}
 
 resource "aws_lb" "my_lb" {
-  name               =  "my-app-lb"
+  name               = "my-app-lb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.main.id]
-  #subnets            = [aws_subnet.subnet1.id]
+  subnets            = [aws_subnet.subnet1.id,aws_subnet.subnet2.id]
 }
